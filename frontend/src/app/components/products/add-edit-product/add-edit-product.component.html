@@ -1,0 +1,52 @@
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+
+            <div class="col-md-7">
+                <!-- Billing Details -->
+
+                <form [formGroup] = "productForm" (ngSubmit)="onSubmit()">
+                    <div class="billing-details">
+                        <div class="section-title">
+                            <h3 class="title">{{lable}}</h3>
+                            <a class="primary-btn order-submit" routerLink='/product-list' style='float:right'>View Products</a>
+
+                        </div>
+                        <div *ngIf="successMessageFlag"class="success" style="color:green">{{successMessage}}</div>
+                        <div *ngIf="errorMessageFlag"class="danger" style="color:red">{{errorMessage}}</div>
+
+                        <div class="form-group">
+                            <label for="category_id"> Category</label>
+                            <select  class="input"  formControlName="category_id" >
+                                <option value="">Select category</option>
+                                <option *ngFor="let cat of categoryList;" [value]="cat._id">
+                                    {{cat.name}}
+                                  </option>
+                            </select>
+                            <div *ngIf="submitted && fval.category_id.errors" class="invalid-feedback">
+                                <div *ngIf="fval.category_id.errors.required"class="danger" style="color:red">Category is required</div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="fisrtname"> Name</label>
+                            <input class="input" type="text" formControlName="name" placeholder="Product Name" >
+                            <div *ngIf="submitted && fval.name.errors" class="invalid-feedback">
+                                <div *ngIf="fval.name.errors.required"class="danger" style="color:red">Product name is required</div>
+                            </div>
+                            <input class="input" type="hidden" formControlName="isEdited" value=false >
+
+                        </div>
+                       
+                        <button class="primary-btn order-submit">Submit</button>
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>  

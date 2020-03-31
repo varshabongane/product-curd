@@ -1,0 +1,39 @@
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+
+            <div class="col-md-7">
+                <!-- Billing Details -->
+
+                <form [formGroup] = "categoryForm" (ngSubmit)="onSubmit()">
+                    <div class="billing-details">
+                        <div class="section-title">
+                            <h3 class="title">{{lable}}</h3>
+                            <a class="primary-btn order-submit" routerLink='/category-list' style='float:right'>View Catgories</a>
+
+                        </div>
+                        <div *ngIf="successMessageFlag"class="success" style="color:green">{{successMessage}}</div>
+                        <div *ngIf="errorMessageFlag"class="danger" style="color:red">{{errorMessage}}</div>
+
+                        <div class="form-group">
+                            <label for="fisrtname"> Name</label>
+                            <input class="input" type="text" formControlName="name" placeholder="Category Name" >
+                            <div *ngIf="submitted && fval.name.errors" class="invalid-feedback">
+                                <div *ngIf="fval.name.errors.required"class="danger" style="color:red">Category is required</div>
+                            </div>
+                            <input class="input" type="hidden" formControlName="isEdited" value=false >
+
+                        </div>
+                       
+                        <button class="primary-btn order-submit">Submit</button>
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>  
